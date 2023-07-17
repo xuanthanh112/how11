@@ -31,16 +31,24 @@ if(!empty($_POST )){
         $id=$_POST['id'];
         
     }
-
-    
 require_once('db/dbhelper.php');
+    
+    if ($id != '') {
+		//update
+		$sql = "update products set title = '$title', thumbnail = '$thumbnail', content = '$content' , price = '$price', created_at = '$created_at', updated_at = '$updated_at'where id = " .$id;
+	} else {
+		//insert
+		$sql = "insert into products(title, thumbnail, content,price, created_at, updated_at) value ('$title', '$thumbnail', '$content', '$price', '$created_at', '$updated_at')";
+	}
 
-    $sql="update products set title='$title', thumbnail='$thumbnail', content='$content', price='$price', created_at='$created_at', updated_at='$updated_at' where id ='$id'";
+	// echo $sql;
 
+	execute($sql);
 
-execute($sql);
-header('Location:index.php');
+	header('Location: index.php');
+	die();
 }
+
 $id='';
 
 require_once('db/dbhelper.php');

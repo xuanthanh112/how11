@@ -46,7 +46,7 @@ if (isset($_GET['s']) && $_GET['s'] != '') {
 $booklist=executeResult($sql);
 foreach($booklist as $bl){
    echo'
-    <tr> 
+    <tr>    
     <td>'.$bl['id'].'</td>
     <td>'.$bl['title'].'</td>
     <td>'.$bl['price'].'</td>
